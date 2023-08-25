@@ -53,3 +53,4 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 	public abstract Page<PropietarioInmueble> findAll(Pageable pageable);
 
 }
+//For refactor
