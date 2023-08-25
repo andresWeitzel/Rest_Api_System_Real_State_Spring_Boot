@@ -1,7 +1,6 @@
 package com.sistema_inmobiliaria.entities;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -20,8 +19,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PropietarioInmueble {
-	
-
 	
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
