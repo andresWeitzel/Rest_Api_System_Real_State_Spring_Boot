@@ -1,7 +1,6 @@
 package com.sistema_inmobiliaria.entities;
 
 import java.sql.Date;
-import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,8 +21,8 @@ public class PropietarioInmueble {
 	
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
-	@Column(name="id")
-	private UUID id;
+	@Column(name="id", nullable=false , unique=true)
+	private long id;
 	
 	@Column(name="nombre", nullable=false, length=100)
 	private String nombre;

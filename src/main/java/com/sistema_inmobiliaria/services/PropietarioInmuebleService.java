@@ -112,7 +112,7 @@ public class PropietarioInmuebleService {
 	// ===================
 	// ===== GET BY ID ===
 	// ===================
-	public PropietarioInmueble findById(UUID id) {
+	public PropietarioInmueble findById(int id) {
 		return iPropInmRepository.findById(id);
 	}
 
@@ -135,6 +135,28 @@ public class PropietarioInmuebleService {
 	// =======================
 	public Page<PropietarioInmueble> findByEdad(int edad, Pageable pageable) {
 		return iPropInmRepository.findByEdad(edad, pageable);
+	}
+
+	// ==========================
+	// ===== GET BY EDAD (MAX)===
+	// ==========================
+	public Page<PropietarioInmueble> findByEdadFilter(int maxEdad, Pageable pageable) {
+		try {
+			return iPropInmRepository.findByEdadFilter(maxEdad, pageable);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	// ================================
+	// ===== GET BY EDAD (MAX & MIN)===
+	// ================================
+	public Page<PropietarioInmueble> findByEdadFilter(int minEdad, int maxEdad, Pageable pageable) {
+		try {
+			return iPropInmRepository.findByEdadFilter(minEdad, maxEdad, pageable);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	// =======================
@@ -177,6 +199,17 @@ public class PropietarioInmuebleService {
 	// ===============================
 	public Page<PropietarioInmueble> findByNroTelSec(String nroTelSec, Pageable pageable) {
 		return iPropInmRepository.findByNroTelSec(nroTelSec, pageable);
+	}
+
+	// =====================================
+	// ===== GET BY NRO TEL PRINC OR SEC ===
+	// =====================================
+	public Page<PropietarioInmueble> findByNroTelFilter(String nroTelFilter, Pageable pageable) {
+		try {
+			return iPropInmRepository.findByNroTelFilter(nroTelFilter, pageable);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	// =======================

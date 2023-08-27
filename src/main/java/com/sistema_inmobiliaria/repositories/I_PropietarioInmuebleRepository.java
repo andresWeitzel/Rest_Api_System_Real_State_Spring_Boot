@@ -20,7 +20,7 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 	// ============================ MÉTODOS DE BÚSQUEDA
 	// ==============================
 
-	public abstract PropietarioInmueble findById(UUID id);
+	public abstract PropietarioInmueble findById(int id);
 
 	@Query("select c from PropietarioInmueble c where c.nombre like %:nombre%")
 	public abstract Page<PropietarioInmueble> findByNombre(String nombre, Pageable pageable);
@@ -29,6 +29,12 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 	public abstract Page<PropietarioInmueble> findByApellido(String apellido, Pageable pageable);
 
 	public abstract Page<PropietarioInmueble> findByEdad(int edad, Pageable pageable);
+	
+	@Query("select c from PropietarioInmueble c where c.edad <= ?1")
+	public abstract Page<PropietarioInmueble> findByEdadFilter(int maxEdad, Pageable pageable);
+	
+	@Query("select c from PropietarioInmueble c where c.edad >= ?1 and c.edad <=?2")
+	public abstract Page<PropietarioInmueble> findByEdadFilter(int minEdad, int maxEdad, Pageable pageable);
 
 	public abstract Page<PropietarioInmueble> findByFechaNac(Date fechaNac, Pageable pageable);
 
@@ -46,6 +52,10 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 
 	@Query("select c from PropietarioInmueble c where c.nroTelSec like %:nroTelSec%")
 	public abstract Page<PropietarioInmueble> findByNroTelSec(String nroTelSec, Pageable pageable);
+	
+	@Query("select c from PropietarioInmueble c where c.nroTelPrinc like %:nroTelFilter% "
+			+ "or c.nroTelSec like %:nroTelFilter%")
+	public abstract Page<PropietarioInmueble> findByNroTelFilter(String nroTelFilter, Pageable pageable);
 
 	@Query("select c from PropietarioInmueble c where c.email like %:email%")
 	public abstract Page<PropietarioInmueble> findByEmail(String email, Pageable pageable);
@@ -53,4 +63,3 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 	public abstract Page<PropietarioInmueble> findAll(Pageable pageable);
 
 }
-//For refactor

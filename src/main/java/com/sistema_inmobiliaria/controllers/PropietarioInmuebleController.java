@@ -122,11 +122,12 @@ public class PropietarioInmuebleController {
 	// ===================
 	// ---PROPIETARIO POR ID---
 	@GetMapping("/id/{id}")
-	public PropietarioInmueble findById(@PathVariable("id") UUID id) {
+	public PropietarioInmueble findById(@PathVariable("id") int id) {
 
 		return propInmService.findById(id);
 
 	}
+	
 
 	// =======================
 	// ===== GET BY NOMBRE ===
@@ -158,6 +159,34 @@ public class PropietarioInmuebleController {
 	public Page<PropietarioInmueble> findByEdad(@PathVariable("edad") int edad, Pageable pageable) {
 
 		return propInmService.findByEdad(edad, pageable);
+
+	}
+
+	// ===========================
+	// ===== GET BY EDAD (MAX) ===
+	// ===========================
+	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD MÁXIMA---
+	@GetMapping("/edad-filter/{maxEdad}")
+	public Page<PropietarioInmueble> findByEdadFilter(@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
+		try {
+			return propInmService.findByEdadFilter(maxEdad, pageable);
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+	
+	// =================================
+	// ===== GET BY EDAD (MAX & MIN) ===
+	// =================================
+	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD MÁXIMA Y MÍNIMA---
+	@GetMapping("/edad-filter/{minEdad}/{maxEdad}")
+	public Page<PropietarioInmueble> findByEdadFilter(@PathVariable("minEdad") int minEdad,@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
+		try {
+			return propInmService.findByEdadFilter(minEdad, maxEdad, pageable);
+		} catch (Exception e) {
+			return null;
+		}
 
 	}
 
@@ -230,7 +259,18 @@ public class PropietarioInmuebleController {
 		return propInmService.findByNroTelSec(nroTelefonoSecundario, pageable);
 
 	}
+	
+	// =====================================
+	// ===== GET BY NRO TEL PRINC OR SEC ===
+	// =====================================
+	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR NRO DE TEL PRINC O SEC---
+	@GetMapping("/numero-telefono-filter/{nro-tel-filter}")
+	public Page<PropietarioInmueble> findByNroTelFilter(@PathVariable("nro-tel-filter") String nroTelefonoFilter,
+			Pageable pageable) {
 
+		return propInmService.findByNroTelFilter(nroTelefonoFilter, pageable);
+
+	}
 	// =======================
 	// ===== GET BY EMAIL ===
 	// =======================
