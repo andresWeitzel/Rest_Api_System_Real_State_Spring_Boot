@@ -1,5 +1,7 @@
 package com.sistema_inmobiliaria.entities;
 
+//For refactor
+
 import java.sql.Date;
 import java.util.UUID;
 
