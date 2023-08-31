@@ -104,6 +104,22 @@ public class PropietarioInmuebleService {
 
 		return iPropInmRepository.findAll(pageable);
 	}
+	
+	// =========================
+	// ===== GET ALL FILTER=====
+	// =========================
+	public Page<PropietarioInmueble> getAllFilterPropInm(String filter,Pageable pageable) {
+
+		return iPropInmRepository.findAllFilter(filter,pageable);
+	}
+	
+	// ================================
+	// ===== GET ALL EXCLUDE FILTER=====
+	// ================================
+	public Page<PropietarioInmueble> getAllExcludeFilterPropInm(String filter,Pageable pageable) {
+
+		return iPropInmRepository.findAllExcludeFilter(filter,pageable);
+	}
 
 	// ==================================================
 	// ============= MÉTODOS HTTP BÚSQUEDA =============
@@ -140,9 +156,9 @@ public class PropietarioInmuebleService {
 	// ==========================
 	// ===== GET BY EDAD (MAX)===
 	// ==========================
-	public Page<PropietarioInmueble> findByEdadFilter(int maxEdad, Pageable pageable) {
+	public Page<PropietarioInmueble> findByEdadMax(int maxEdad, Pageable pageable) {
 		try {
-			return iPropInmRepository.findByEdadFilter(maxEdad, pageable);
+			return iPropInmRepository.findByEdadMax(maxEdad, pageable);
 		} catch (Exception e) {
 			return null;
 		}
@@ -151,9 +167,9 @@ public class PropietarioInmuebleService {
 	// ================================
 	// ===== GET BY EDAD (MAX & MIN)===
 	// ================================
-	public Page<PropietarioInmueble> findByEdadFilter(int minEdad, int maxEdad, Pageable pageable) {
+	public Page<PropietarioInmueble> findByEdadMinMax(int minEdad, int maxEdad, Pageable pageable) {
 		try {
-			return iPropInmRepository.findByEdadFilter(minEdad, maxEdad, pageable);
+			return iPropInmRepository.findByEdadMinMax(minEdad, maxEdad, pageable);
 		} catch (Exception e) {
 			return null;
 		}

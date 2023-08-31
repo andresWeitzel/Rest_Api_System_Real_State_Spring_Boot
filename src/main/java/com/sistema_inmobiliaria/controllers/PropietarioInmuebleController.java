@@ -112,6 +112,24 @@ public class PropietarioInmuebleController {
 	public Page<PropietarioInmueble> getAll(Pageable pageable) {
 		return propInmService.getAllPropInm(pageable);
 	}
+	
+	// ========================
+	// ===== GET ALL FILTER=====
+	// ========================
+	// ---LISTADO DE PROPIETARIOS PAGINADO CON FILTRO---
+	@GetMapping("/listado-filter/{filter}")
+	public Page<PropietarioInmueble> getAllFilter(@PathVariable("filter") String filter,Pageable pageable) {
+		return propInmService.getAllFilterPropInm(filter,pageable);
+	}
+	
+	// =================================
+	// ===== GET ALL EXCLUDE FILTER=====
+	// =================================
+	// ---LISTADO DE PROPIETARIOS PAGINADO CON EXCLUSIÓN DE FILTRO ---
+	@GetMapping("/listado-exclude-filter/{filter}")
+	public Page<PropietarioInmueble> getAllExcludeFilter(@PathVariable("filter") String filter,Pageable pageable) {
+		return propInmService.getAllExcludeFilterPropInm(filter,pageable);
+	}
 
 	// ==================================================
 	// ============= MÉTODOS HTTP BÚSQUEDA =============
@@ -123,9 +141,7 @@ public class PropietarioInmuebleController {
 	// ---PROPIETARIO POR ID---
 	@GetMapping("/id/{id}")
 	public PropietarioInmueble findById(@PathVariable("id") int id) {
-
 		return propInmService.findById(id);
-
 	}
 	
 
@@ -166,10 +182,10 @@ public class PropietarioInmuebleController {
 	// ===== GET BY EDAD (MAX) ===
 	// ===========================
 	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD MÁXIMA---
-	@GetMapping("/edad-filter/{maxEdad}")
-	public Page<PropietarioInmueble> findByEdadFilter(@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
+	@GetMapping("/edad-maxima/{maxEdad}")
+	public Page<PropietarioInmueble> findByEdadMax(@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
 		try {
-			return propInmService.findByEdadFilter(maxEdad, pageable);
+			return propInmService.findByEdadMax(maxEdad, pageable);
 		} catch (Exception e) {
 			return null;
 		}
@@ -180,10 +196,10 @@ public class PropietarioInmuebleController {
 	// ===== GET BY EDAD (MAX & MIN) ===
 	// =================================
 	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD MÁXIMA Y MÍNIMA---
-	@GetMapping("/edad-filter/{minEdad}/{maxEdad}")
-	public Page<PropietarioInmueble> findByEdadFilter(@PathVariable("minEdad") int minEdad,@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
+	@GetMapping("/edad-minima-maxima/{minEdad}/{maxEdad}")
+	public Page<PropietarioInmueble> findByEdadMinMax(@PathVariable("minEdad") int minEdad,@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
 		try {
-			return propInmService.findByEdadFilter(minEdad, maxEdad, pageable);
+			return propInmService.findByEdadMinMax(minEdad, maxEdad, pageable);
 		} catch (Exception e) {
 			return null;
 		}
