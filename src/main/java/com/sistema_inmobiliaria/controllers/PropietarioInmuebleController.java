@@ -1,8 +1,6 @@
 package com.sistema_inmobiliaria.controllers;
 
 import java.sql.Date;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,14 +36,7 @@ public class PropietarioInmuebleController {
 	public ResponseEntity<?> addPropInm(@RequestBody PropietarioInmueble propInm) {
 
 		try {
-			boolean propInmCheck = (propInmService.addPropInm(propInm)) ? true : false;
-
-			if (propInmCheck) {
-				return new ResponseEntity<PropietarioInmueble>(propInm, HttpStatus.OK);
-			} else {
-				return new ResponseEntity<String>("No se ha Insertado el Propietario del Inmueble en la Base de Datos",
-						HttpStatus.UNPROCESSABLE_ENTITY);
-			}
+			return new ResponseEntity<PropietarioInmueble>(propInm, HttpStatus.OK);
 
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
@@ -61,16 +52,7 @@ public class PropietarioInmuebleController {
 	public ResponseEntity<?> updatePropInm(@RequestBody PropietarioInmueble propInm) {
 
 		try {
-
-			boolean propInmCheck = (propInmService.updatePropInm(propInm)) ? true : false;
-
-			if (propInmCheck) {
-				return new ResponseEntity<PropietarioInmueble>(propInm, HttpStatus.OK);
-			} else {
-				return new ResponseEntity<String>(
-						"No se ha Actualizado el Propietario del Inmueble en la Base de Datos",
-						HttpStatus.UNPROCESSABLE_ENTITY);
-			}
+			return new ResponseEntity<PropietarioInmueble>(propInm, HttpStatus.OK);
 
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
@@ -83,19 +65,10 @@ public class PropietarioInmuebleController {
 	// ===== DELETE =====
 	// ==================
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deletePropInm(@PathVariable("id") UUID id) {
+	public ResponseEntity<?> deletePropInm(@PathVariable("id") long id) {
 
 		try {
-
-			boolean propInmCheck = (propInmService.deletePropInm(id)) ? true : false;
-
-			if (propInmCheck) {
-				return new ResponseEntity<String>("Se ha Eliminado el Propietario del Inmueble de la Base de Datos",
-						HttpStatus.OK);
-			} else {
-				return new ResponseEntity<String>("No se ha Eliminado el Propietario del Inmueble de la Base de Datos",
-						HttpStatus.UNPROCESSABLE_ENTITY);
-			}
+			return new ResponseEntity<PropietarioInmueble>(HttpStatus.OK);
 
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
@@ -113,6 +86,24 @@ public class PropietarioInmuebleController {
 		return propInmService.getAllPropInm(pageable);
 	}
 
+	// ========================
+	// ===== GET ALL FILTER=====
+	// ========================
+	// ---LISTADO DE PROPIETARIOS PAGINADO CON FILTRO---
+	@GetMapping("/listado-filter/{filter}")
+	public Page<PropietarioInmueble> getAllFilter(@PathVariable("filter") String filter, Pageable pageable) {
+		return propInmService.getAllFilterPropInm(filter, pageable);
+	}
+
+	// =================================
+	// ===== GET ALL EXCLUDE FILTER=====
+	// =================================
+	// ---LISTADO DE PROPIETARIOS PAGINADO CON EXCLUSIÓN DE FILTRO ---
+	@GetMapping("/listado-exclude-filter/{filter}")
+	public Page<PropietarioInmueble> getAllExcludeFilter(@PathVariable("filter") String filter, Pageable pageable) {
+		return propInmService.getAllExcludeFilterPropInm(filter, pageable);
+	}
+
 	// ==================================================
 	// ============= MÉTODOS HTTP BÚSQUEDA =============
 	// ==================================================
@@ -122,10 +113,8 @@ public class PropietarioInmuebleController {
 	// ===================
 	// ---PROPIETARIO POR ID---
 	@GetMapping("/id/{id}")
-	public PropietarioInmueble findById(@PathVariable("id") UUID id) {
-
+	public PropietarioInmueble findById(@PathVariable("id") int id) {
 		return propInmService.findById(id);
-
 	}
 
 	// =======================
@@ -161,9 +150,38 @@ public class PropietarioInmuebleController {
 
 	}
 
-	// =======================
+	// ===========================
+	// ===== GET BY EDAD (MAX) ===
+	// ===========================
+	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD MÁXIMA---
+	@GetMapping("/edad-maxima/{maxEdad}")
+	public Page<PropietarioInmueble> findByEdadMax(@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
+		try {
+			return propInmService.findByEdadMax(maxEdad, pageable);
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+
+	// ===================================
+	// ===== GET BY EDAD ( MIN & MAX ) ===
+	// ===================================
+	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD MÁXIMA Y MÍNIMA---
+	@GetMapping("/edad-minima-maxima/{minEdad}/{maxEdad}")
+	public Page<PropietarioInmueble> findByEdadMinMax(@PathVariable("minEdad") int minEdad,
+			@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
+		try {
+			return propInmService.findByEdadMinMax(minEdad, maxEdad, pageable);
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+
+	// ==========================
 	// ===== GET BY FECHA NAC ===
-	// =======================
+	// ==========================
 	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR FECHA DE NAC---
 	@GetMapping("/fecha-nacimiento/{fecha}")
 	public Page<PropietarioInmueble> findByFechaNac(@PathVariable("fecha") Date fechaNacimiento, Pageable pageable) {
@@ -228,6 +246,18 @@ public class PropietarioInmuebleController {
 			Pageable pageable) {
 
 		return propInmService.findByNroTelSec(nroTelefonoSecundario, pageable);
+
+	}
+
+	// =====================================
+	// ===== GET BY NRO TEL PRINC OR SEC ===
+	// =====================================
+	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR NRO DE TEL PRINC O SEC---
+	@GetMapping("/numero-telefono-filter/{nro-tel-filter}")
+	public Page<PropietarioInmueble> findByNroTelFilter(@PathVariable("nro-tel-filter") String nroTelefonoFilter,
+			Pageable pageable) {
+
+		return propInmService.findByNroTelFilter(nroTelefonoFilter, pageable);
 
 	}
 
