@@ -19,10 +19,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PropietarioInmueble {
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Id
 	@Column(name="id", nullable=false , unique=true)
-	private long id;
+	private int id;
 	
 	@Column(name="nombre", nullable=false, length=100)
 	private String nombre;
