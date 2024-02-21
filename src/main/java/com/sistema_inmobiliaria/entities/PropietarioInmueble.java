@@ -1,13 +1,15 @@
 package com.sistema_inmobiliaria.entities;
 
-import java.sql.Date;
-
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,13 +21,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PropietarioInmueble {
 	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name="id", nullable=false , unique=true)
+	@JsonProperty("id")
 	private int id;
 	
-	@Column(name="nombre", nullable=false, length=100)
-	private String nombre;
+	@Column(name="name", nullable=false, length=100)
+	@JsonProperty("name")
+	private String name;
 	
 	@Column(name="apellido", nullable=false, length=100)
 	private String apellido;
@@ -53,6 +57,16 @@ public class PropietarioInmueble {
 	
 	@Column(name="email", nullable=true, length=50 , unique=true)
 	private String email;
+
+	@Column(name="created_at", nullable=false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonProperty("created_at")
+	private Date createdAt;
+	
+	@Column(name="updated_at", nullable=false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonProperty("updated_at")
+	private Date updatedAt;
 	
 	
 	

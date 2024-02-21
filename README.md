@@ -1,2 +1,2 @@
-# Api_Rest_Sistema_Inmobiliaria_Spring_Boot
-Api Rest para Sistema de Administración de Inmobiliaria implementado con Spring Boot, Spring Cloud, Spring Data JPA, Spring Security, JWT, Lombok, Maven, Postman, PostgreSQL, Otros.
+# Rest_Api_System_Real_State_Spring_Boot
+Rest Api for Real Estate Management System implemented with Spring Boot, Spring Data JPA, Lombok, Maven, Postman, PostgreSQL, Others.

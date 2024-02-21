@@ -118,13 +118,13 @@ public class PropietarioInmuebleController {
 	}
 
 	// =======================
-	// ===== GET BY NOMBRE ===
+	// ===== GET BY NAME ===
 	// =======================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR NOMBRE---
-	@GetMapping("/nombre/{nombre}")
-	public Page<PropietarioInmueble> findByNombre(@PathVariable("nombre") String nombre, Pageable pageable) {
+	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR name---
+	@GetMapping("/name/{name}")
+	public Page<PropietarioInmueble> findByName(@PathVariable("name") String name, Pageable pageable) {
 
-		return propInmService.findByNombre(nombre, pageable);
+		return propInmService.findByName(name, pageable);
 
 	}
 

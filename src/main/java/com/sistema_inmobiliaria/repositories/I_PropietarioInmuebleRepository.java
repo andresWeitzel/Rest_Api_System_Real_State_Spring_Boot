@@ -19,21 +19,21 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 
 	public abstract Page<PropietarioInmueble> findAll(Pageable pageable);
 	
-	@Query("select c from PropietarioInmueble c where concat( lower(c.nombre), lower(c.apellido), c.fechaNac"
+	@Query("select c from PropietarioInmueble c where concat( lower(c.name), lower(c.apellido), c.fechaNac"
 			+ ", lower(c.tipoDoc) , lower(c.nroDoc), lower(c.direc), lower(c.nroTelPrinc), lower(c.nroTelSec), lower(c.email) "
 			+ ") like lower( concat ( '%', ?1, '%'))")
 	public abstract Page<PropietarioInmueble> findAllFilter(String filtro, Pageable pageable);
 
 	
-	@Query("select c from PropietarioInmueble c where not concat( lower(c.nombre), lower(c.apellido), c.fechaNac"
+	@Query("select c from PropietarioInmueble c where not concat( lower(c.name), lower(c.apellido), c.fechaNac"
 			+ ", lower(c.tipoDoc), lower(c.nroDoc), lower(c.direc), lower(c.nroTelPrinc), lower(c.nroTelSec), lower(c.email)"
 			+ ") like lower( concat ( '%', ?1, '%'))")
 	public abstract Page<PropietarioInmueble> findAllExcludeFilter(String filtro, Pageable pageable);
 	
 	public abstract PropietarioInmueble findById(long id);
 
-	@Query("select c from PropietarioInmueble c where lower(c.nombre) like lower(concat('%', :nombre, '%'))")
-	public abstract Page<PropietarioInmueble> findByNombre(String nombre, Pageable pageable);
+	@Query("select c from PropietarioInmueble c where lower(c.name) like lower(concat('%', :nombre, '%'))")
+	public abstract Page<PropietarioInmueble> findByName(String nombre, Pageable pageable);
 
 	@Query("select c from PropietarioInmueble c where lower(c.apellido) like lower(concat('%', :apellido, '%'))")
 	public abstract Page<PropietarioInmueble> findByApellido(String apellido, Pageable pageable);
