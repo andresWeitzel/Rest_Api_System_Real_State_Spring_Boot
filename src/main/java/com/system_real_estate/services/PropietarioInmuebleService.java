@@ -1,6 +1,7 @@
 package com.system_real_estate.services;
 
 import java.sql.Date;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.apache.logging.log4j.Logger;
@@ -30,22 +31,19 @@ public class PropietarioInmuebleService {
 	// ================
 	// ===== POST =====
 	// =================
-	public boolean addPropInm(PropietarioInmueble propInm) {
+	public void addPropInm(PropietarioInmueble propInm) {
 		try {
 
 			if (propInm == null || propInm.toString().isEmpty()) {
 				logger.error(
 						"ERROR addPropietarioInmueble : EL PROPIETARIO DEL INMUEBLE " + propInm + " ES NULO O VACIO!!");
-				return false;
 			} else {
 				iPropInmRepository.save(propInm);
-				return true;
 			}
 
 		} catch (Exception e) {
 			logger.error(
 					"ERROR addInmueble : EL PROPIETARIO DEL INMUEBLE " + propInm + " NO SE HA INSERTADO EN LA DB!!");
-			return false;
 
 		}
 	}
@@ -53,33 +51,42 @@ public class PropietarioInmuebleService {
 	// ==============
 	// ===== PUT=====
 	// ==============
-	public boolean updatePropInm(PropietarioInmueble propInm) {
+	public void updatePropInm(long id,PropietarioInmueble propInm) {
 		try {
 
 			if (propInm == null) {
 				logger.error("ERROR updatePropietarioInmueble : EL PROPIETARIO DEL INMUEBLE " + propInm + " ES NULO!!");
-				return false;
 
 			} else {
-				iPropInmRepository.save(propInm);
-				return true;
+				PropietarioInmueble newPropInm = iPropInmRepository.findById(id);
+				
+				newPropInm.setNombre(propInm.getNombre());
+				newPropInm.setApellido(propInm.getApellido());
+				newPropInm.setEdad(propInm.getEdad());
+				newPropInm.setFechaNac(propInm.getFechaNac());
+				newPropInm.setTipoDoc(propInm.getTipoDoc());
+				newPropInm.setNroDoc(propInm.getNroDoc());
+				newPropInm.setDirec(propInm.getDirec());
+				newPropInm.setNroTelPrinc(propInm.getNroTelPrinc());
+				newPropInm.setNroTelSec(propInm.getNroTelSec());
+				newPropInm.setEmail(propInm.getEmail());
+				
+				iPropInmRepository.save(newPropInm);
 
 			}
 
 		} catch (Exception e) {
 			logger.error("ERROR updatePropietarioInmueble : EL PROPIETARIO DEL INMUEBLE " + propInm
 					+ " NO SE HA ACTUALIZADO EN LA DB!!");
-			return false;
-
 		}
 	}
 
 	// ==================
 	// ===== DELETE =====
 	// ==================
-	public boolean deletePropInm(UUID id) {
+	public boolean deletePropInm(long id) {
 		try {
-			if (id == null) {
+			if (id <= 0) {
 				logger.error("ERROR deletePropietarioInmueble : EL ID DEL PROPIETARIO DEL INMUEBLE NO EXISTE!!");
 				return false;
 
@@ -104,6 +111,22 @@ public class PropietarioInmuebleService {
 
 		return iPropInmRepository.findAll(pageable);
 	}
+	
+	// =========================
+	// ===== GET ALL FILTER=====
+	// =========================
+	public Page<PropietarioInmueble> getAllFilterPropInm(String filter,Pageable pageable) {
+
+		return iPropInmRepository.findAllFilter(filter,pageable);
+	}
+	
+	// ================================
+	// ===== GET ALL EXCLUDE FILTER=====
+	// ================================
+	public Page<PropietarioInmueble> getAllExcludeFilterPropInm(String filter,Pageable pageable) {
+
+		return iPropInmRepository.findAllExcludeFilter(filter,pageable);
+	}
 
 	// ==================================================
 	// ============= MÉTODOS HTTP BÚSQUEDA =============
@@ -112,7 +135,7 @@ public class PropietarioInmuebleService {
 	// ===================
 	// ===== GET BY ID ===
 	// ===================
-	public PropietarioInmueble findById(UUID id) {
+	public PropietarioInmueble findById(int id) {
 		return iPropInmRepository.findById(id);
 	}
 
@@ -135,6 +158,28 @@ public class PropietarioInmuebleService {
 	// =======================
 	public Page<PropietarioInmueble> findByEdad(int edad, Pageable pageable) {
 		return iPropInmRepository.findByEdad(edad, pageable);
+	}
+
+	// ==========================
+	// ===== GET BY EDAD (MAX)===
+	// ==========================
+	public Page<PropietarioInmueble> findByEdadMax(int maxEdad, Pageable pageable) {
+		try {
+			return iPropInmRepository.findByEdadMax(maxEdad, pageable);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	// ================================
+	// ===== GET BY EDAD (MAX & MIN)===
+	// ================================
+	public Page<PropietarioInmueble> findByEdadMinMax(int minEdad, int maxEdad, Pageable pageable) {
+		try {
+			return iPropInmRepository.findByEdadMinMax(minEdad, maxEdad, pageable);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	// =======================
@@ -177,6 +222,17 @@ public class PropietarioInmuebleService {
 	// ===============================
 	public Page<PropietarioInmueble> findByNroTelSec(String nroTelSec, Pageable pageable) {
 		return iPropInmRepository.findByNroTelSec(nroTelSec, pageable);
+	}
+
+	// =====================================
+	// ===== GET BY NRO TEL PRINC OR SEC ===
+	// =====================================
+	public Page<PropietarioInmueble> findByNroTelFilter(String nroTelFilter, Pageable pageable) {
+		try {
+			return iPropInmRepository.findByNroTelFilter(nroTelFilter, pageable);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	// =======================

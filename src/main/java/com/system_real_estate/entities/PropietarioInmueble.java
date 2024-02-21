@@ -1,7 +1,11 @@
 package com.system_real_estate.entities;
 
+<<<<<<< HEAD:src/main/java/com/system_real_estate/entities/PropietarioInmueble.java
 import java.util.Date;
 import java.util.UUID;
+=======
+import java.sql.Date;
+>>>>>>> f8cc5c59c0cf8e43ce6e42f1efac9ccc903e9652:src/main/java/com/sistema_inmobiliaria/entities/PropietarioInmueble.java
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -24,11 +28,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PropietarioInmueble {
 	
+<<<<<<< HEAD:src/main/java/com/system_real_estate/entities/PropietarioInmueble.java
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id", nullable=false)
 	@JsonProperty("id")
 	private UUID id;
+=======
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@Id
+	@Column(name="id", nullable=false , unique=true)
+	private int id;
+>>>>>>> f8cc5c59c0cf8e43ce6e42f1efac9ccc903e9652:src/main/java/com/sistema_inmobiliaria/entities/PropietarioInmueble.java
 	
 	@Column(name="nombre", nullable=false, length=100)
 	@JsonProperty("nombre")
