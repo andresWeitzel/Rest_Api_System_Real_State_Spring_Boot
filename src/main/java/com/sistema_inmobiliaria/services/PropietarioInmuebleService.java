@@ -60,7 +60,7 @@ public class PropietarioInmuebleService {
 			} else {
 				PropietarioInmueble newPropInm = iPropInmRepository.findById(id);
 				
-				newPropInm.setNombre(propInm.getNombre());
+				newPropInm.setName(propInm.getName());
 				newPropInm.setApellido(propInm.getApellido());
 				newPropInm.setEdad(propInm.getEdad());
 				newPropInm.setFechaNac(propInm.getFechaNac());
@@ -140,10 +140,10 @@ public class PropietarioInmuebleService {
 	}
 
 	// =======================
-	// ===== GET BY NOMBRE ===
+	// ===== GET BY NAME ===
 	// =======================
-	public Page<PropietarioInmueble> findByNombre(String nombre, Pageable pageable) {
-		return iPropInmRepository.findByNombre(nombre, pageable);
+	public Page<PropietarioInmueble> findByName(String name, Pageable pageable) {
+		return iPropInmRepository.findByName(name, pageable);
 	}
 
 	// =======================
