@@ -1,4 +1,4 @@
-package com.sistema_inmobiliaria.repositories;
+package com.system_real_estate.repositories;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.sistema_inmobiliaria.entities.PropietarioInmueble;
+import com.system_real_estate.entities.PropietarioInmueble;
 
 @Repository
 public interface I_PropietarioInmuebleRepository extends JpaRepository<PropietarioInmueble, Serializable>,

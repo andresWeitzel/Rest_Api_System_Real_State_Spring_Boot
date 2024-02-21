@@ -1,4 +1,4 @@
-package com.sistema_inmobiliaria.controllers;
+package com.system_real_estate.controllers;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sistema_inmobiliaria.entities.PropietarioInmueble;
-import com.sistema_inmobiliaria.services.PropietarioInmuebleService;
+import com.system_real_estate.entities.PropietarioInmueble;
+import com.system_real_estate.services.PropietarioInmuebleService;
 
 @RestController
 @RequestMapping("/api/v1/propietarios-inmuebles")

@@ -1,4 +1,4 @@
-package com.sistema_inmobiliaria;
+package com.system_real_estate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

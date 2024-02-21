@@ -1,4 +1,4 @@
-package com.sistema_inmobiliaria.services;
+package com.system_real_estate.services;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -9,8 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.sistema_inmobiliaria.entities.PropietarioInmueble;
-import com.sistema_inmobiliaria.repositories.I_PropietarioInmuebleRepository;
+import com.system_real_estate.entities.PropietarioInmueble;
+import com.system_real_estate.repositories.I_PropietarioInmuebleRepository;
 
 @Service
 public class PropietarioInmuebleService {
