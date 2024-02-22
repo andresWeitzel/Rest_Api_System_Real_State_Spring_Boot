@@ -19,13 +19,13 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 
 	public abstract Page<PropietarioInmueble> findAll(Pageable pageable);
 	
-	@Query("select c from PropietarioInmueble c where concat( lower(c.name), lower(c.apellido), c.fechaNac"
+	@Query("select c from PropietarioInmueble c where concat( lower(c.name), lower(c.lastName), c.fechaNac"
 			+ ", lower(c.tipoDoc) , lower(c.nroDoc), lower(c.direc), lower(c.nroTelPrinc), lower(c.nroTelSec), lower(c.email) "
 			+ ") like lower( concat ( '%', ?1, '%'))")
 	public abstract Page<PropietarioInmueble> findAllFilter(String filtro, Pageable pageable);
 
 	
-	@Query("select c from PropietarioInmueble c where not concat( lower(c.name), lower(c.apellido), c.fechaNac"
+	@Query("select c from PropietarioInmueble c where not concat( lower(c.name), lower(c.lastName), c.fechaNac"
 			+ ", lower(c.tipoDoc), lower(c.nroDoc), lower(c.direc), lower(c.nroTelPrinc), lower(c.nroTelSec), lower(c.email)"
 			+ ") like lower( concat ( '%', ?1, '%'))")
 	public abstract Page<PropietarioInmueble> findAllExcludeFilter(String filtro, Pageable pageable);
@@ -35,16 +35,16 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 	@Query("select c from PropietarioInmueble c where lower(c.name) like lower(concat('%', :nombre, '%'))")
 	public abstract Page<PropietarioInmueble> findByName(String nombre, Pageable pageable);
 
-	@Query("select c from PropietarioInmueble c where lower(c.apellido) like lower(concat('%', :apellido, '%'))")
-	public abstract Page<PropietarioInmueble> findByApellido(String apellido, Pageable pageable);
+	@Query("select c from PropietarioInmueble c where lower(c.lastName) like lower(concat('%', :lastName, '%'))")
+	public abstract Page<PropietarioInmueble> findByLastName(String lastName, Pageable pageable);
 
-	public abstract Page<PropietarioInmueble> findByEdad(int edad, Pageable pageable);
+	public abstract Page<PropietarioInmueble> findByAge(int age, Pageable pageable);
 	
-	@Query("select c from PropietarioInmueble c where c.edad <= ?1")
-	public abstract Page<PropietarioInmueble> findByEdadMax(int maxEdad, Pageable pageable);
+	@Query("select c from PropietarioInmueble c where c.age <= ?1")
+	public abstract Page<PropietarioInmueble> findByAgeMax(int maxage, Pageable pageable);
 	
-	@Query("select c from PropietarioInmueble c where c.edad >= ?1 and c.edad <=?2")
-	public abstract Page<PropietarioInmueble> findByEdadMinMax(int minEdad, int maxEdad, Pageable pageable);
+	@Query("select c from PropietarioInmueble c where c.age >= ?1 and c.age <=?2")
+	public abstract Page<PropietarioInmueble> findByAgeMinMax(int minage, int maxage, Pageable pageable);
 
 	public abstract Page<PropietarioInmueble> findByFechaNac(Date fechaNac, Pageable pageable);
 

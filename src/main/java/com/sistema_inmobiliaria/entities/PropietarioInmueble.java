@@ -31,11 +31,13 @@ public class PropietarioInmueble {
 	@JsonProperty("name")
 	private String name;
 	
-	@Column(name="apellido", nullable=false, length=100)
-	private String apellido;
+	@Column(name="last_name", nullable=false, length=100)
+	@JsonProperty("last_name")
+	private String lastName;
 	
-	@Column(name="edad", nullable=false)
-	private int edad;
+	@Column(name="age", nullable=false)
+	@JsonProperty("age")
+	private int age;
 	
 	@Column(name="fecha_nacimiento", nullable=false)
 	private Date fechaNac;

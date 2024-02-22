@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.sistema_inmobiliaria.entities.PropietarioInmueble;
 import com.sistema_inmobiliaria.services.PropietarioInmuebleService;
 
 @RestController
-@RequestMapping("/api/v1/propietarios-inmuebles")
+@RequestMapping("/api/v1/property-owners")
 public class PropietarioInmuebleController {
 
 	@Autowired
@@ -111,7 +110,9 @@ public class PropietarioInmuebleController {
 	// ===================
 	// ===== GET BY ID ===
 	// ===================
-	// ---PROPIETARIO POR ID---
+	/**
+	 * This method returns a list of owner/s according to their id
+	 */
 	@GetMapping("/id/{id}")
 	public PropietarioInmueble findById(@PathVariable("id") int id) {
 		return propInmService.findById(id);
@@ -120,44 +121,50 @@ public class PropietarioInmuebleController {
 	// =======================
 	// ===== GET BY NAME ===
 	// =======================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR name---
+	/**
+	 * This method returns a list of owner/s according to their name
+	 */
 	@GetMapping("/name/{name}")
 	public Page<PropietarioInmueble> findByName(@PathVariable("name") String name, Pageable pageable) {
-
 		return propInmService.findByName(name, pageable);
+	}
+
+	// =======================
+	// ===== GET BY LASTNAME ===
+	// =======================
+	/**
+	 * This method returns a list of owner/s according to their lastName
+	 */
+	@GetMapping("/last-name/{lastName}")
+	public Page<PropietarioInmueble> findByLastName(@PathVariable("lastName") String lastName, Pageable pageable) {
+
+		return propInmService.findByLastName(lastName, pageable);
 
 	}
 
 	// =======================
-	// ===== GET BY APELLIDO ===
+	// ===== GET BY AGE ===
 	// =======================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR APELLIDO---
-	@GetMapping("/apellido/{apellido}")
-	public Page<PropietarioInmueble> findByApellido(@PathVariable("apellido") String apellido, Pageable pageable) {
+	/**
+	 * This method returns a list of owner/s according to their age
+	 */
+	@GetMapping("/age/{age}")
+	public Page<PropietarioInmueble> findByAge(@PathVariable("age") int age, Pageable pageable) {
 
-		return propInmService.findByApellido(apellido, pageable);
-
-	}
-
-	// =======================
-	// ===== GET BY EDAD ===
-	// =======================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD---
-	@GetMapping("/edad/{edad}")
-	public Page<PropietarioInmueble> findByEdad(@PathVariable("edad") int edad, Pageable pageable) {
-
-		return propInmService.findByEdad(edad, pageable);
+		return propInmService.findByAge(age, pageable);
 
 	}
 
 	// ===========================
-	// ===== GET BY EDAD (MAX) ===
+	// ===== GET BY AGE (MAX) ===
 	// ===========================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD MÁXIMA---
-	@GetMapping("/edad-maxima/{maxEdad}")
-	public Page<PropietarioInmueble> findByEdadMax(@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
+	/**
+	 * This method returns a list of owner/s according to their max age
+	 */
+	@GetMapping("/max-age/{maxAge}")
+	public Page<PropietarioInmueble> findByAgeMax(@PathVariable("maxAge") int maxAge, Pageable pageable) {
 		try {
-			return propInmService.findByEdadMax(maxEdad, pageable);
+			return propInmService.findByAgeMax(maxAge, pageable);
 		} catch (Exception e) {
 			return null;
 		}
@@ -165,14 +172,16 @@ public class PropietarioInmuebleController {
 	}
 
 	// ===================================
-	// ===== GET BY EDAD ( MIN & MAX ) ===
+	// ===== GET BY AGE ( MIN & MAX ) ===
 	// ===================================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR EDAD MÁXIMA Y MÍNIMA---
-	@GetMapping("/edad-minima-maxima/{minEdad}/{maxEdad}")
-	public Page<PropietarioInmueble> findByEdadMinMax(@PathVariable("minEdad") int minEdad,
-			@PathVariable("maxEdad") int maxEdad, Pageable pageable) {
+	/**
+	 * This method returns a list of owner/s according to their max and min age
+	 */
+	@GetMapping("/min-max-age/{minAge}/{maxAge}")
+	public Page<PropietarioInmueble> findByAgeMinMax(@PathVariable("minAge") int minAge,
+			@PathVariable("maxAge") int maxAge, Pageable pageable) {
 		try {
-			return propInmService.findByEdadMinMax(minEdad, maxEdad, pageable);
+			return propInmService.findByAgeMinMax(minAge, maxAge, pageable);
 		} catch (Exception e) {
 			return null;
 		}
