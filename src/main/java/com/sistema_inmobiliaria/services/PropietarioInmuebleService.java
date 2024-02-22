@@ -1,15 +1,11 @@
 package com.sistema_inmobiliaria.services;
 
 import java.sql.Date;
-import java.util.Optional;
-import java.util.UUID;
-
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.sistema_inmobiliaria.entities.PropietarioInmueble;
 import com.sistema_inmobiliaria.repositories.I_PropietarioInmuebleRepository;
 
@@ -61,8 +57,8 @@ public class PropietarioInmuebleService {
 				PropietarioInmueble newPropInm = iPropInmRepository.findById(id);
 				
 				newPropInm.setName(propInm.getName());
-				newPropInm.setApellido(propInm.getApellido());
-				newPropInm.setEdad(propInm.getEdad());
+				newPropInm.setLastName(propInm.getLastName());
+				newPropInm.setAge(propInm.getAge());
 				newPropInm.setFechaNac(propInm.getFechaNac());
 				newPropInm.setTipoDoc(propInm.getTipoDoc());
 				newPropInm.setNroDoc(propInm.getNroDoc());
@@ -147,36 +143,36 @@ public class PropietarioInmuebleService {
 	}
 
 	// =======================
-	// ===== GET BY APELLIDO ===
+	// ===== GET BY LASTNAME ===
 	// =======================
-	public Page<PropietarioInmueble> findByApellido(String apellido, Pageable pageable) {
-		return iPropInmRepository.findByApellido(apellido, pageable);
+	public Page<PropietarioInmueble> findByLastName(String lastName, Pageable pageable) {
+		return iPropInmRepository.findByLastName(lastName, pageable);
 	}
 
 	// =======================
-	// ===== GET BY EDAD ===
+	// ===== GET BY AGE ===
 	// =======================
-	public Page<PropietarioInmueble> findByEdad(int edad, Pageable pageable) {
-		return iPropInmRepository.findByEdad(edad, pageable);
+	public Page<PropietarioInmueble> findByAge(int age, Pageable pageable) {
+		return iPropInmRepository.findByAge(age, pageable);
 	}
 
 	// ==========================
-	// ===== GET BY EDAD (MAX)===
+	// ===== GET BY AGE (MAX)===
 	// ==========================
-	public Page<PropietarioInmueble> findByEdadMax(int maxEdad, Pageable pageable) {
+	public Page<PropietarioInmueble> findByAgeMax(int maxAge, Pageable pageable) {
 		try {
-			return iPropInmRepository.findByEdadMax(maxEdad, pageable);
+			return iPropInmRepository.findByAgeMax(maxAge, pageable);
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
 	// ================================
-	// ===== GET BY EDAD (MAX & MIN)===
+	// ===== GET BY AGE (MAX & MIN)===
 	// ================================
-	public Page<PropietarioInmueble> findByEdadMinMax(int minEdad, int maxEdad, Pageable pageable) {
+	public Page<PropietarioInmueble> findByAgeMinMax(int minAge, int maxAge, Pageable pageable) {
 		try {
-			return iPropInmRepository.findByEdadMinMax(minEdad, maxEdad, pageable);
+			return iPropInmRepository.findByAgeMinMax(minAge, maxAge, pageable);
 		} catch (Exception e) {
 			return null;
 		}
