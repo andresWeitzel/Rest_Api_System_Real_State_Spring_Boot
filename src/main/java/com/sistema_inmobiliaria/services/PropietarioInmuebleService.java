@@ -47,7 +47,7 @@ public class PropietarioInmuebleService {
 	// ==============
 	// ===== PUT=====
 	// ==============
-	public void updatePropInm(long id,PropietarioInmueble propInm) {
+	public void updatePropInm(long id, PropietarioInmueble propInm) {
 		try {
 
 			if (propInm == null) {
@@ -55,18 +55,18 @@ public class PropietarioInmuebleService {
 
 			} else {
 				PropietarioInmueble newPropInm = iPropInmRepository.findById(id);
-				
+
 				newPropInm.setName(propInm.getName());
 				newPropInm.setLastName(propInm.getLastName());
 				newPropInm.setAge(propInm.getAge());
-				newPropInm.setFechaNac(propInm.getFechaNac());
-				newPropInm.setTipoDoc(propInm.getTipoDoc());
-				newPropInm.setNroDoc(propInm.getNroDoc());
+				newPropInm.setBirthdate(propInm.getBirthdate());
+				newPropInm.setDocumentType(propInm.getDocumentType());
+				newPropInm.setDocumentNumber(propInm.getDocumentNumber());
 				newPropInm.setDirec(propInm.getDirec());
 				newPropInm.setNroTelPrinc(propInm.getNroTelPrinc());
 				newPropInm.setNroTelSec(propInm.getNroTelSec());
 				newPropInm.setEmail(propInm.getEmail());
-				
+
 				iPropInmRepository.save(newPropInm);
 
 			}
@@ -107,21 +107,21 @@ public class PropietarioInmuebleService {
 
 		return iPropInmRepository.findAll(pageable);
 	}
-	
+
 	// =========================
 	// ===== GET ALL FILTER=====
 	// =========================
-	public Page<PropietarioInmueble> getAllFilterPropInm(String filter,Pageable pageable) {
+	public Page<PropietarioInmueble> getAllFilterPropInm(String filter, Pageable pageable) {
 
-		return iPropInmRepository.findAllFilter(filter,pageable);
+		return iPropInmRepository.findAllFilter(filter, pageable);
 	}
-	
+
 	// ================================
 	// ===== GET ALL EXCLUDE FILTER=====
 	// ================================
-	public Page<PropietarioInmueble> getAllExcludeFilterPropInm(String filter,Pageable pageable) {
+	public Page<PropietarioInmueble> getAllExcludeFilterPropInm(String filter, Pageable pageable) {
 
-		return iPropInmRepository.findAllExcludeFilter(filter,pageable);
+		return iPropInmRepository.findAllExcludeFilter(filter, pageable);
 	}
 
 	// ==================================================
@@ -178,25 +178,25 @@ public class PropietarioInmuebleService {
 		}
 	}
 
-	// =======================
-	// ===== GET BY FECHA NAC ===
-	// =======================
-	public Page<PropietarioInmueble> findByFechaNac(Date fechaNac, Pageable pageable) {
-		return iPropInmRepository.findByFechaNac(fechaNac, pageable);
+	// ==========================
+	// ===== GET BY BIRTHDATE ===
+	// ==========================
+	public Page<PropietarioInmueble> findByBirthdate(Date birthdate, Pageable pageable) {
+		return iPropInmRepository.findByBirthdate(birthdate, pageable);
 	}
 
-	// =======================
-	// ===== GET BY TIPO DOC ===
-	// =======================
-	public Page<PropietarioInmueble> findByTipoDoc(String tipoDoc, Pageable pageable) {
-		return iPropInmRepository.findByTipoDoc(tipoDoc, pageable);
+	// ==============================
+	// ===== GET BY DOCUMENT TYPE ===
+	// ==============================
+	public Page<PropietarioInmueble> findByDocumentType(String documentType, Pageable pageable) {
+		return iPropInmRepository.findByDocumentType(documentType, pageable);
 	}
 
-	// =======================
-	// ===== GET BY NRO DOC ===
-	// =======================
-	public Page<PropietarioInmueble> findByNroDoc(String nroDoc, Pageable pageable) {
-		return iPropInmRepository.findByNroDoc(nroDoc, pageable);
+	// ================================
+	// ===== GET BY DOCUMENT NUMBER ===
+	// ===============================
+	public Page<PropietarioInmueble> findByDocumentNumber(String documentNumber, Pageable pageable) {
+		return iPropInmRepository.findByDocumentNumber(documentNumber, pageable);
 	}
 
 	// =======================

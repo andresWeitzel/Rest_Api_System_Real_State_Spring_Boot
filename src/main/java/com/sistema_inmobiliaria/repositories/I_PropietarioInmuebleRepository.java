@@ -19,14 +19,14 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 
 	public abstract Page<PropietarioInmueble> findAll(Pageable pageable);
 	
-	@Query("select c from PropietarioInmueble c where concat( lower(c.name), lower(c.lastName), c.fechaNac"
-			+ ", lower(c.tipoDoc) , lower(c.nroDoc), lower(c.direc), lower(c.nroTelPrinc), lower(c.nroTelSec), lower(c.email) "
+	@Query("select c from PropietarioInmueble c where concat( lower(c.name), lower(c.lastName), c.birthdate"
+			+ ", lower(c.documentType) , lower(c.documentNumber), lower(c.direc), lower(c.nroTelPrinc), lower(c.nroTelSec), lower(c.email) "
 			+ ") like lower( concat ( '%', ?1, '%'))")
 	public abstract Page<PropietarioInmueble> findAllFilter(String filtro, Pageable pageable);
 
 	
-	@Query("select c from PropietarioInmueble c where not concat( lower(c.name), lower(c.lastName), c.fechaNac"
-			+ ", lower(c.tipoDoc), lower(c.nroDoc), lower(c.direc), lower(c.nroTelPrinc), lower(c.nroTelSec), lower(c.email)"
+	@Query("select c from PropietarioInmueble c where not concat( lower(c.name), lower(c.lastName), c.birthdate"
+			+ ", lower(c.documentType), lower(c.documentNumber), lower(c.direc), lower(c.nroTelPrinc), lower(c.nroTelSec), lower(c.email)"
 			+ ") like lower( concat ( '%', ?1, '%'))")
 	public abstract Page<PropietarioInmueble> findAllExcludeFilter(String filtro, Pageable pageable);
 	
@@ -46,13 +46,13 @@ public interface I_PropietarioInmuebleRepository extends JpaRepository<Propietar
 	@Query("select c from PropietarioInmueble c where c.age >= ?1 and c.age <=?2")
 	public abstract Page<PropietarioInmueble> findByAgeMinMax(int minage, int maxage, Pageable pageable);
 
-	public abstract Page<PropietarioInmueble> findByFechaNac(Date fechaNac, Pageable pageable);
+	public abstract Page<PropietarioInmueble> findByBirthdate(Date birthdate, Pageable pageable);
 
-	@Query("select c from PropietarioInmueble c where lower(c.tipoDoc) like lower(concat('%', :tipoDoc, '%'))")
-	public abstract Page<PropietarioInmueble> findByTipoDoc(String tipoDoc, Pageable pageable);
+	@Query("select c from PropietarioInmueble c where lower(c.documentType) like lower(concat('%', :documentType, '%'))")
+	public abstract Page<PropietarioInmueble> findByDocumentType(String documentType, Pageable pageable);
 
-	@Query("select c from PropietarioInmueble c where lower(c.nroDoc) like lower(concat('%', :nroDoc, '%'))")
-	public abstract Page<PropietarioInmueble> findByNroDoc(String nroDoc, Pageable pageable);
+	@Query("select c from PropietarioInmueble c where lower(c.documentNumber) like lower(concat('%', :documentNumber, '%'))")
+	public abstract Page<PropietarioInmueble> findByDocumentNumber(String documentNumber, Pageable pageable);
 
 	@Query("select c from PropietarioInmueble c where lower(c.direc) like lower(concat('%', :direc, '%'))")
 	public abstract Page<PropietarioInmueble> findByDirec(String direc, Pageable pageable);

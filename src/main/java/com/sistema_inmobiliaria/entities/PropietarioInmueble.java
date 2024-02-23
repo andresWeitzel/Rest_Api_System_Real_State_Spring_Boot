@@ -39,14 +39,17 @@ public class PropietarioInmueble {
 	@JsonProperty("age")
 	private int age;
 	
-	@Column(name="fecha_nacimiento", nullable=false)
-	private Date fechaNac;
+	@Column(name="birthdate", nullable=false)
+	@JsonProperty("birthdate")
+	private Date birthdate;
 	
-	@Column(name="tipo_documento", nullable=false, length=30)
-	private String tipoDoc;
+	@Column(name="document_type", nullable=false, length=30)
+	@JsonProperty("document_type")
+	private String documentType;
 	
-	@Column(name="nro_documento", nullable=false, length=50 , unique=true)
-	private String nroDoc;
+	@Column(name="document_number", nullable=false, length=50 , unique=true)
+	@JsonProperty("document_number")
+	private String documentNumber;
 	
 	@Column(name="direccion", nullable=false, length=100 )
 	private String direc;

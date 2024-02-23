@@ -189,38 +189,40 @@ public class PropietarioInmuebleController {
 	}
 
 	// ==========================
-	// ===== GET BY FECHA NAC ===
+	// ===== GET BY BIRTHDATE ===
 	// ==========================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR FECHA DE NAC---
-	@GetMapping("/fecha-nacimiento/{fecha}")
-	public Page<PropietarioInmueble> findByFechaNac(@PathVariable("fecha") Date fechaNacimiento, Pageable pageable) {
+	/**
+	 * This method returns a list of owner/s according to birthdate
+	 */
+	@GetMapping("/birthdate/{date}")
+	public Page<PropietarioInmueble> findByBirthdate(@PathVariable("date") Date bithdate, Pageable pageable) {
 
-		return propInmService.findByFechaNac(fechaNacimiento, pageable);
-
-	}
-
-	// =======================
-	// ===== GET BY TIPO DOC ===
-	// =======================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR TIPO DOC---
-	@GetMapping("/tipo-documento/{tipo_documento}")
-	public Page<PropietarioInmueble> findByTipoDoc(@PathVariable("tipo_documento") String tipoDocumento,
-			Pageable pageable) {
-
-		return propInmService.findByTipoDoc(tipoDocumento, pageable);
+		return propInmService.findByBirthdate(bithdate, pageable);
 
 	}
 
-	// =======================
-	// ===== GET BY NRO DOC ===
-	// =======================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR NRO DE DOC---
-	@GetMapping("/numero-documento/{nro_documento}")
-	public Page<PropietarioInmueble> findByNroDoc(@PathVariable("nro_documento") String nroDocumento,
+	// ==============================
+	// ===== GET BY DOCUMENT TYPE ===
+	// ==============================
+	/**
+	 * This method returns a list of owner/s according to document type
+	 */
+	@GetMapping("/document-type/{document-type}")
+	public Page<PropietarioInmueble> findByDocumentType(@PathVariable("document-type") String documentType,
 			Pageable pageable) {
+		return propInmService.findByDocumentType(documentType, pageable);
+	}
 
-		return propInmService.findByNroDoc(nroDocumento, pageable);
-
+	// ================================
+	// ===== GET BY DOCUMENT NUMBER ===
+	// ================================
+	/**
+	 * This method returns a list of owner/s according to document number
+	 */
+	@GetMapping("/document-number/{document-number}")
+	public Page<PropietarioInmueble> findByDocumentNumber(@PathVariable("document-number") String documentNumber,
+			Pageable pageable) {
+		return propInmService.findByDocumentNumber(documentNumber, pageable);
 	}
 
 	// =======================
