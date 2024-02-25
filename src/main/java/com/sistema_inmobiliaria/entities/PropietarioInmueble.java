@@ -51,16 +51,20 @@ public class PropietarioInmueble {
 	@JsonProperty("document_number")
 	private String documentNumber;
 	
-	@Column(name="direccion", nullable=false, length=100 )
-	private String direc;
+	@Column(name="address", nullable=false, length=100 )
+	@JsonProperty("address")
+	private String address;
 	
-	@Column(name="nro_telefono_principal", nullable=false, length=40 , unique=true)
-	private String nroTelPrinc;
+	@Column(name="main_phone_number", nullable=false, length=40 , unique=true)
+	@JsonProperty("main_phone_number")
+	private String mainPhoneNumber;
 	
-	@Column(name="nro_telefono_secundario", nullable=true, length=50 )
-	private String nroTelSec;
+	@Column(name="secondary_phone_number", nullable=true, length=50 )
+	@JsonProperty("secondary_phone_number")
+	private String secondaryPhoneNumber;
 	
 	@Column(name="email", nullable=true, length=50 , unique=true)
+	@JsonProperty("email")
 	private String email;
 
 	@Column(name="created_at", nullable=false)

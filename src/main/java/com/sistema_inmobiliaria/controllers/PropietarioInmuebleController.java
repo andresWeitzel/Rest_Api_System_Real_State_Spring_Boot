@@ -225,51 +225,53 @@ public class PropietarioInmuebleController {
 		return propInmService.findByDocumentNumber(documentNumber, pageable);
 	}
 
+	// ========================
+	// ===== GET BY ADDRESS ===
 	// =======================
-	// ===== GET BY DIREC ===
-	// =======================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR DIREC---
-	@GetMapping("/direccion/{direccion}")
-	public Page<PropietarioInmueble> findByDirec(@PathVariable("direccion") String direcccion, Pageable pageable) {
-
-		return propInmService.findByDirec(direcccion, pageable);
-
+	/**
+	 * This method returns a list of owner/s according to address
+	 */
+	@GetMapping("/address/{address}")
+	public Page<PropietarioInmueble> findByAddress(@PathVariable("address") String address, Pageable pageable) {
+		return propInmService.findByAddress(address, pageable);
 	}
 
-	// ==============================
-	// ===== GET BY NRO TEL PRINC ===
-	// ===============================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR NRO DE TEL PRINC---
-	@GetMapping("/numero-telefono-principal/{nro-tel-princ}")
-	public Page<PropietarioInmueble> findByNroTelPrinc(@PathVariable("nro-tel-princ") String nroTelefonoPrincipal,
+	// ==================================
+	// ===== GET BY MAIN PHONE NUMBER ===
+	// ==================================
+	/**
+	 * This method returns a list of owner/s according to main phone number
+	 */
+	@GetMapping("/main-phone-number/{mainPhoneNumber}")
+	public Page<PropietarioInmueble> findByMainPhoneNumber(@PathVariable("mainPhoneNumber") String mainPhoneNumber,
 			Pageable pageable) {
-
-		return propInmService.findByNroTelPrinc(nroTelefonoPrincipal, pageable);
-
+		return propInmService.findByMainPhoneNumber(mainPhoneNumber, pageable);
 	}
 
-	// ==============================
-	// ===== GET BY NRO TEL SEC ===
-	// ===============================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR NRO DE TEL SEC---
-	@GetMapping("/numero-telefono-secundario/{nro-tel-sec}")
-	public Page<PropietarioInmueble> findByNroTelSec(@PathVariable("nro-tel-sec") String nroTelefonoSecundario,
+	// =======================================
+	// ===== GET BY SECONDARY PHONE NUMBER ===
+	// =======================================
+	/**
+	 * This method returns a list of owner/s according to secondary phone number
+	 */
+	@GetMapping("/secondary-phone-number/{secondaryPhoneNumber}")
+	public Page<PropietarioInmueble> findBySecondaryPhoneNumber(
+			@PathVariable("secondaryPhoneNumber") String secondaryPhoneNumber,
 			Pageable pageable) {
-
-		return propInmService.findByNroTelSec(nroTelefonoSecundario, pageable);
-
+		return propInmService.findBySecondaryPhoneNumber(secondaryPhoneNumber, pageable);
 	}
 
-	// =====================================
-	// ===== GET BY NRO TEL PRINC OR SEC ===
-	// =====================================
-	// ---LISTADO DE PROPIETARIOS O PROPIETARIO POR NRO DE TEL PRINC O SEC---
-	@GetMapping("/numero-telefono-filter/{nro-tel-filter}")
-	public Page<PropietarioInmueble> findByNroTelFilter(@PathVariable("nro-tel-filter") String nroTelefonoFilter,
+	// ===============================================
+	// ===== GET BY MAIN OR SECONDARY PHONE NUMBER ===
+	// ===============================================
+	/**
+	 * This method returns a list of owner/s according to main or secondary phone number
+	 */
+	@GetMapping("/phone-number-filter/{phoneNumberFilter}")
+	public Page<PropietarioInmueble> findByPhoneNumberFilter(
+			@PathVariable("phoneNumberFilter") String phoneNumberFilter,
 			Pageable pageable) {
-
-		return propInmService.findByNroTelFilter(nroTelefonoFilter, pageable);
-
+		return propInmService.findByPhoneNumberFilter(phoneNumberFilter, pageable);
 	}
 
 	// =======================

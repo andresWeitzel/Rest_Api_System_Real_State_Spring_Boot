@@ -62,9 +62,9 @@ public class PropietarioInmuebleService {
 				newPropInm.setBirthdate(propInm.getBirthdate());
 				newPropInm.setDocumentType(propInm.getDocumentType());
 				newPropInm.setDocumentNumber(propInm.getDocumentNumber());
-				newPropInm.setDirec(propInm.getDirec());
-				newPropInm.setNroTelPrinc(propInm.getNroTelPrinc());
-				newPropInm.setNroTelSec(propInm.getNroTelSec());
+				newPropInm.setAddress(propInm.getAddress());
+				newPropInm.setMainPhoneNumber(propInm.getMainPhoneNumber());
+				newPropInm.setSecondaryPhoneNumber(propInm.getSecondaryPhoneNumber());
 				newPropInm.setEmail(propInm.getEmail());
 
 				iPropInmRepository.save(newPropInm);
@@ -200,32 +200,32 @@ public class PropietarioInmuebleService {
 	}
 
 	// =======================
-	// ===== GET BY DIREC ===
+	// ===== GET BY ADDRESS ===
 	// =======================
-	public Page<PropietarioInmueble> findByDirec(String direccion, Pageable pageable) {
-		return iPropInmRepository.findByDirec(direccion, pageable);
+	public Page<PropietarioInmueble> findByAddress(String address, Pageable pageable) {
+		return iPropInmRepository.findByAddress(address, pageable);
 	}
 
-	// ==============================
-	// ===== GET BY NRO TEL PRINC ===
-	// ===============================
-	public Page<PropietarioInmueble> findByNroTelPrinc(String nroTelPrinc, Pageable pageable) {
-		return iPropInmRepository.findByNroTelPrinc(nroTelPrinc, pageable);
+	// ==================================
+	// ===== GET BY MAIN PHONE NUMBER ===
+	// ==================================
+	public Page<PropietarioInmueble> findByMainPhoneNumber(String mainPhoneNumber, Pageable pageable) {
+		return iPropInmRepository.findByMainPhoneNumber(mainPhoneNumber, pageable);
 	}
 
-	// ==============================
-	// ===== GET BY NRO TEL SEC ===
-	// ===============================
-	public Page<PropietarioInmueble> findByNroTelSec(String nroTelSec, Pageable pageable) {
-		return iPropInmRepository.findByNroTelSec(nroTelSec, pageable);
+	// =======================================
+	// ===== GET BY SECONDARY PHONE NUMBER ===
+	// =======================================
+	public Page<PropietarioInmueble> findBySecondaryPhoneNumber(String secondaryPhoneNumber, Pageable pageable) {
+		return iPropInmRepository.findBySecondaryPhoneNumber(secondaryPhoneNumber, pageable);
 	}
 
-	// =====================================
-	// ===== GET BY NRO TEL PRINC OR SEC ===
-	// =====================================
-	public Page<PropietarioInmueble> findByNroTelFilter(String nroTelFilter, Pageable pageable) {
+	// ===============================================
+	// ===== GET BY MAIN OR SECUNDARY PHONE NUMBER ===
+	// ===============================================
+	public Page<PropietarioInmueble> findByPhoneNumberFilter(String phoneNumberFilter, Pageable pageable) {
 		try {
-			return iPropInmRepository.findByNroTelFilter(nroTelFilter, pageable);
+			return iPropInmRepository.findByPhoneNumberFilter(phoneNumberFilter, pageable);
 		} catch (Exception e) {
 			return null;
 		}

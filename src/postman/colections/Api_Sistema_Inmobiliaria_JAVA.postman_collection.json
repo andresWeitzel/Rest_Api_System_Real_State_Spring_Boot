@@ -1,0 +1,890 @@
+{
+	"info": {
+		"_postman_id": "1f47731c-a726-4e23-ac40-633945eb0205",
+		"name": "Api_Sistema_Inmobiliaria_JAVA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18757319"
+	},
+	"item": [
+		{
+			"name": "Property-Owners",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "getAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/propietarios-inmuebles/listado?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propietarios-inmuebles",
+										"listado"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllFilter",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/propietarios-inmuebles/listado-filter/1975-10-09?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propietarios-inmuebles",
+										"listado-filter",
+										"1975-10-09"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllExcludeFilter",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/propietarios-inmuebles/listado-exclude-filter/1975-10-09?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propietarios-inmuebles",
+										"listado-exclude-filter",
+										"1975-10-09"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getById",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/propietarios-inmuebles/id/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propietarios-inmuebles",
+										"id",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByName",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/name/mar?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"name",
+										"mar"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByLastName",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/last-name/zulenski?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"last-name",
+										"zulenski"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByAge",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/age/49?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"age",
+										"49"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByMaxAge",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/max-age/64?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"max-age",
+										"64"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByMinMaxAge",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/min-max-age/40/65?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"min-max-age",
+										"40",
+										"65"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByBirthdate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/birthdate/1971-12-08?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"birthdate",
+										"1971-12-08"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByDocumentType",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/document-type/dni?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"document-type",
+										"dni"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByDocumentNumber",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/document-number/45897677?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"document-number",
+										"45897677"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByAddress",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/address/San?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"address",
+										"San"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByMainPhoneNumber",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/main-phone-number/+5491156?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"main-phone-number",
+										"+5491156"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getBySecondaryPhoneNumber",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/secondary-phone-number/+5491156?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"secondary-phone-number",
+										"+5491156"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByPhoneNumberFilter",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/phone-number-filter/+54?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"phone-number-filter",
+										"+54"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByEmail",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/property-owners/email/@?page=0&size=200&sort=id,asc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"property-owners",
+										"email",
+										"@"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "200"
+										},
+										{
+											"key": "sort",
+											"value": "id,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "addPropInm",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n            \"nombre\": \"Julieta\",\r\n            \"apellido\": \"Bustamante\",\r\n            \"edad\": 27,\r\n            \"fechaNac\": \"1985-07-19\",\r\n            \"tipoDoc\": \"DNI\",\r\n            \"nroDoc\": \"33897876\",\r\n            \"direc\": \"Av. concordia 7821\",\r\n            \"nroTelPrinc\": \"+54911728221112\",\r\n            \"nroTelSec\": \"-\",\r\n            \"email\": \"juli_opd@gmail.com\"\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/propietarios-inmuebles/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propietarios-inmuebles",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "updatePropInm",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n            \"nombre\": \"Julieta\",\r\n            \"apellido\": \"Bustamante\",\r\n            \"edad\": 27,\r\n            \"fechaNac\": \"1985-07-19\",\r\n            \"tipoDoc\": \"DNI\",\r\n            \"nroDoc\": \"33897876\",\r\n            \"direc\": \"Av. concordia 7821\",\r\n            \"nroTelPrinc\": \"+54911728221112\",\r\n            \"nroTelSec\": \"-\",\r\n            \"email\": \"juli_opd@gmail.com\"\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/propietarios-inmuebles/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propietarios-inmuebles",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "updatePropInm",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/propietarios-inmuebles/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"propietarios-inmuebles",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8093/api/v1"
+		}
+	]
+}
